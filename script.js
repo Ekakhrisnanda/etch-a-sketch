@@ -1,7 +1,7 @@
 const container = document.querySelector('.board-container');
-const btnBlack = document.createElement('button').classList.add('black');
-const btnEraser = document.createElement('button').classList.add('eraser');
-const btnRgb = document.createElement('button').classList.add('rgb');
+const btnBlack = document.createElement('button');
+const btnEraser = document.createElement('button');
+const btnRgb = document.createElement('button');
 const btnsContainer = document.querySelector('.color-buttons');
 
 const board = function(cols, rows) {
@@ -15,3 +15,43 @@ const board = function(cols, rows) {
 }
 
 board(16, 16);
+
+const blackColor = function() {
+    const grids = container.querySelectorAll('.grid');
+    btnBlack.textContent = 'Black'
+    btnBlack.addEventListener('click', () => {
+        grids.forEach(grid => grid.addEventListener('mouseover', () => {
+            let colorCode = Math.floor(Math.random() * 255) + 1;
+            grid.style.background = 'rgb(${colorCode}, ${colorCode}, ${colorCode})';
+        }))
+
+    })
+
+    btnsContainer.appendChild(btnBlack);
+}
+
+// const rgbColor =  function() {
+//     const grids = container.querySelectorAll('.grid');
+//     btnBlack.textContent = 'RGB';
+//     btnBlack.addEventListener('click', () => {
+//         grids.forEach(grid => grid.addEventListener('mouseover', () => {
+//             grid.style.background =
+//         }))
+
+//     })
+
+//     btnsContainer.appendChild(btnRgb);
+// }
+
+const eraser =  function() {
+    const grids = container.querySelectorAll('.grid');
+    btnBlack.textContent = 'Eraser';
+    btnBlack.addEventListener('click', () => {
+        grids.forEach(grid => grid.addEventListener('mouseover', () => {
+            grid.style.background = 'white'
+        }))
+
+    })
+
+    btnsContainer.appendChild(btnEraser);
+}
