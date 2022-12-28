@@ -2,7 +2,7 @@ const container = document.querySelector('.board-container');
 const btnBlack = document.createElement('button').classList.add('black');
 const btnEraser = document.createElement('button').classList.add('eraser');
 const btnRgb = document.createElement('button').classList.add('rgb');
-const btnsContainer = document.querySelector('.buttons');
+const btnsContainer = document.querySelector('.color-buttons');
 
 const board = function(cols, rows) {
     for (let i = 0; i < (cols * rows); i++) {
