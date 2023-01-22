@@ -1,8 +1,8 @@
-/* * {
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-} */
+}
 
 .main-container {
     display: flex;
@@ -31,4 +31,12 @@
     align-items: center;
     width: 200px;
     margin-top: 7px;
+}
+
+.resize-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 7px;
+    margin-top: 20px;
 }

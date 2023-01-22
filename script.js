@@ -3,48 +3,50 @@ const btnBlack = document.createElement('button');
 const btnEraser = document.createElement('button');
 const btnRgb = document.createElement('button');
 const btnRezise = document.createElement('button');
+const resizeContainer = document.querySelector('.resize-button');
 const btnsContainer = document.querySelector('.color-buttons');
-let columns = 0;
-let rows = 0;
 
-const board = function(cols, rows) {
-    for (let i = 0; i < (cols * rows); i++) {
+const board = function(col, row) {
+    for (let i = 0; i < (col * row); i++) {
         const div = document.createElement('div');
         div.style.border = '1px solid black';
-        container.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
-        container.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
+        container.style.gridTemplateColumns = `repeat(${col}, 1fr)`;
+        container.style.gridTemplateRows = `repeat(${row}, 1fr)`;
         container.appendChild(div).classList.add('grid');
     }
 }
 
 board(16, 16);
 
-// const resizeButton = function() {
-//     const btn = container.querySelector('.resize-button');
-//     btnRezise.textContent = 'Resize';
-//     btnRezise.addEventListener('click', () => {
-//         rows = alert('Insert number of ROW!');
-//         columns = alert('Insert number of COLUMN!');
-//         // validate the input is number
-//         if (!typeof rows === 'number' && !typeof columns === 'number') {
-//             return alert('Insert number please!');
-//         } else {
-//             return true;
-//         }
-//         // set the limit
-//         if (columns > 100 && < 1 && rows > 100 && < 1 ) {
-//             return false;
-//         } else {
-//             return true;
-//         }
-//     })
+const reset = function() {
+    const grids = container.querySelectorAll('.grid');
+    grids.forEach(box => box.remove())
+}
 
-// }
+const resizeButton = function() {
+    btnRezise.textContent = 'Resize';
+    btnRezise.addEventListener('click', () => {
+        let size = prompt('Input size of your grid? (Max = 100)')
+        if (isNaN(size) || size < 1 || size > 100) {
+            reset()
+            board(16, 16);
+            blackColor();
+            eraser();
+            rgbColor();
+        } else {
+            reset()
+            board(size, size);
+            blackColor();
+            eraser();
+            rgbColor();
+        }
+    })
+    resizeContainer.appendChild(btnRezise).classList.add('btn');
+}
 
-// resizeButton()
+resizeButton()
 
 // color buttons
-
 const blackColor = function() {
     const grids = container.querySelectorAll('.grid');
     btnBlack.textContent = 'Black';
